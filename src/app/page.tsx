@@ -8,7 +8,7 @@ export default async function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl px-4 pt-1 pb-8">
+      <main className="mx-auto w-full max-w-3xl px-4 pt-4 pb-8">
         <Feed stacks={stacks} />
       </main>
     </>

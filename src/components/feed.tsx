@@ -48,7 +48,7 @@ export function Feed({ stacks }: { stacks: Stack[] }) {
         ))}
       </div>
 
-      <div className="mt-4 flex flex-col gap-2.5">
+      <div className="mt-5 flex flex-col gap-3">
         {visible.map((stack) => (
           <FeedCard key={stack.slug} stack={stack} />
         ))}

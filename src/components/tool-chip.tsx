@@ -46,10 +46,19 @@ export function InlineToolName({
       tabIndex={0}
       aria-label={`${tool.name}: ${tool.blurb}`}
       className={cn(
-        "group/tool relative cursor-default rounded-sm outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
+        "group/tool relative inline-flex cursor-default items-baseline gap-1 rounded-sm outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/40",
         className,
       )}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element -- favicon service, not a local asset */}
+      <img
+        src={faviconUrl(tool.domain)}
+        alt=""
+        width={16}
+        height={16}
+        className="size-4 shrink-0 self-center rounded-sm"
+        loading="lazy"
+      />
       {tool.name}
       <span
         role="tooltip"

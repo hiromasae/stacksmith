@@ -22,7 +22,7 @@ export function FeedCard({ stack }: { stack: Stack }) {
   const { author } = stack;
 
   return (
-    <article className="rounded-md border bg-card px-4 py-3.5 text-card-foreground transition-colors hover:border-foreground/20">
+    <article className="rounded-md border bg-card p-4 text-card-foreground transition-colors hover:border-foreground/20">
       {/* Creator: avatar + name · role · company · time on one line */}
       <div className="flex items-center gap-2">
         <Avatar size="sm">
@@ -42,7 +42,7 @@ export function FeedCard({ stack }: { stack: Stack }) {
       </div>
 
       {/* Title */}
-      <h2 className="mt-2 text-[0.9375rem] leading-snug font-semibold">
+      <h2 className="mt-2 text-base leading-snug font-bold">
         <Link
           href={`/stack/${stack.slug}`}
           className="transition-colors hover:text-primary"
@@ -70,6 +70,7 @@ export function FeedCard({ stack }: { stack: Stack }) {
         >
           <MessageSquare className="size-4" />
           <span className="tabular-nums">{formatCount(stack.commentCount)}</span>
+          <span>comments</span>
         </Link>
       </div>
     </article>
