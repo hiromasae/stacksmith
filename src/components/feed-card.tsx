@@ -51,15 +51,20 @@ export function FeedCard({ stack }: { stack: Stack }) {
         </Link>
       </h2>
 
-      {/* Workflow: inline tool names in order, one-liner on hover */}
-      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-        {stack.tools.map((tool, i) => (
-          <Fragment key={tool.name}>
-            {i > 0 && <span className="mx-1 select-none">·</span>}
-            <InlineToolName tool={tool} />
-          </Fragment>
-        ))}
-      </p>
+      {/* Workflow: tool names set into an inset, shaded block so they read as
+          their own zone instead of competing with the title and counts. */}
+      <div className="mt-3 rounded-md border bg-foreground/8 px-3 py-2 dark:border-black/50 dark:bg-black/25">
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          {stack.tools.map((tool, i) => (
+            <Fragment key={tool.name}>
+              {i > 0 && (
+                <span className="mx-1.5 select-none text-foreground/25">·</span>
+              )}
+              <InlineToolName tool={tool} />
+            </Fragment>
+          ))}
+        </p>
+      </div>
 
       {/* Counts: save + comments together, both blue */}
       <div className="mt-2 flex items-center gap-3">

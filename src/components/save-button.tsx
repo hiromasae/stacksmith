@@ -22,7 +22,7 @@ export function SaveButton({ initialCount }: { initialCount: number }) {
         aria-label={saved ? "Remove from saved" : "Save this stack"}
         onClick={() => setSaved((s) => !s)}
         className={cn(
-          "inline-flex size-9 items-center justify-center rounded-md text-primary transition-colors outline-none select-none hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-ring/50",
+          "inline-flex size-8 items-center justify-center rounded-md text-primary transition-colors outline-none select-none hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-ring/50",
           saved && "bg-primary/10",
         )}
       >

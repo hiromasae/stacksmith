@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
   function toggle() {
-    const isDark = document.documentElement.classList.toggle("dark");
+    const root = document.documentElement;
+    root.classList.add("theme-instant");
+    const isDark = root.classList.toggle("dark");
+    requestAnimationFrame(() => {
+      root.classList.remove("theme-instant");
+    });
     try {
       localStorage.setItem("theme", isDark ? "dark" : "light");
     } catch {}

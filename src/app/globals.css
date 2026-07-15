@@ -127,4 +127,9 @@
   html {
     @apply font-sans;
   }
+  .theme-instant *,
+  .theme-instant *::before,
+  .theme-instant *::after {
+    transition: none !important;
+  }
 }
