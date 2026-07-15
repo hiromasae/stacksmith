@@ -13,18 +13,28 @@ export function SiteHeader() {
             <Layers className="size-5 text-primary" />
             <span>stacksmith</span>
           </Link>
-          <nav>
+          <nav className="flex items-center gap-4">
             <Link
               href="/"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               Explore
             </Link>
+            <Link
+              href="/saved"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Saved
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-1.5">
           <ThemeToggle />
-          <Button size="sm">
+          <Button
+            size="sm"
+            nativeButton={false}
+            render={<Link href="/submit" />}
+          >
             <Plus className="size-4" />
             Create Your Stack
           </Button>

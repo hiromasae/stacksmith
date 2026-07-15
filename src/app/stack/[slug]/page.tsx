@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Bookmark, ExternalLink } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { PricingDots } from "@/components/pricing-dots";
+import { SaveButton } from "@/components/save-button";
+import { authorSlug } from "@/lib/authors";
 import { getAllStackSlugs, getStackBySlug } from "@/lib/data";
 import { faviconUrl, formatCount, formatRelativeTime } from "@/lib/format";
 import {
@@ -71,7 +72,15 @@ export default async function StackPage({
           <p className="text-lg text-muted-foreground">{stack.description}</p>
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            <span>by {stack.author.name}</span>
+            <span>
+              by{" "}
+              <Link
+                href={`/u/${authorSlug(stack.author.name)}`}
+                className="font-medium text-foreground transition-colors hover:text-primary"
+              >
+                {stack.author.name}
+              </Link>
+            </span>
             <span aria-hidden>·</span>
             <span suppressHydrationWarning>
               {formatRelativeTime(stack.createdAt)}
@@ -92,10 +101,7 @@ export default async function StackPage({
           </div>
 
           <div className="flex gap-2">
-            <Button>
-              <Bookmark className="size-4" />
-              Save this stack
-            </Button>
+            <SaveButton slug={stack.slug} initialCount={stack.bookmarkCount} />
           </div>
         </header>
 

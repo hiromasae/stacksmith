@@ -3,6 +3,16 @@ export function faviconUrl(domain: string, size = 64): string {
   return `https://www.google.com/s2/favicons?sz=${size}&domain=${domain}`;
 }
 
+/** "Emily Chen" -> "EC", "Dr. James Wilson" -> "JW". */
+export function initials(name: string): string {
+  return name
+    .replace(/^(Dr|Mr|Ms|Mrs)\.?\s+/i, "")
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 /** 9400 -> "9.4k", 950 -> "950". */
 export function formatCount(n: number): string {
   if (n >= 1000) {
