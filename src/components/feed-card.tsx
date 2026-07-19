@@ -49,8 +49,11 @@ export function FeedCard({ stack }: { stack: Stack }) {
 
       {/* Workflow: tool names set into an inset, shaded block so they read as
           their own zone instead of competing with the title and counts. */}
-      <div className="mt-3 rounded-md border bg-foreground/8 px-3 py-2 dark:border-black/50 dark:bg-black/25">
-        <p className="text-xs leading-relaxed text-muted-foreground">
+      <div className="mt-3 rounded-md border bg-foreground/12 px-3 py-2 dark:border-black/50 dark:bg-black/40">
+        {/* text-foreground/65 (not text-muted-foreground) keeps AA contrast
+            on this darker inset — muted-foreground is tuned for white/near-
+            white surfaces. */}
+        <p className="text-xs leading-relaxed text-foreground/65">
           {stack.tools.map((tool, i) => (
             <Fragment key={tool.name}>
               {i > 0 && (

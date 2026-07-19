@@ -9,8 +9,12 @@ export function ThemeToggle() {
     const root = document.documentElement;
     root.classList.add("theme-instant");
     const isDark = root.classList.toggle("dark");
+    // Double rAF: a single one fires before the first post-toggle style
+    // recalc, re-enabling transitions early enough that colors still fade.
     requestAnimationFrame(() => {
-      root.classList.remove("theme-instant");
+      requestAnimationFrame(() => {
+        root.classList.remove("theme-instant");
+      });
     });
     try {
       localStorage.setItem("theme", isDark ? "dark" : "light");

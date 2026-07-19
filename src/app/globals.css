@@ -65,8 +65,9 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  /* 0.52 (not 0.556) so muted text keeps AA contrast on the shaded tool
-     gutter (#ececec), not just on white. */
+  /* 0.52 (not 0.556) so muted text keeps AA contrast on lightly shaded
+     surfaces, not just on white. (The feed card's tool gutter is darker
+     still and uses text-foreground/65 instead.) */
   --muted-foreground: oklch(0.52 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
