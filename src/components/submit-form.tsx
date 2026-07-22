@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Textarea } from "@/components/ui/textarea";
 import { PricingDots } from "@/components/pricing-dots";
 import { cn } from "@/lib/utils";
 import {
@@ -199,43 +198,43 @@ export function SubmitForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-8">
-      {/* Basics */}
-      <section className="flex flex-col gap-4">
-        <div className="flex flex-col gap-1.5">
-          <Label htmlFor="stack-title">Title</Label>
-          <Input
-            id="stack-title"
-            name="title"
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-              setErrors((prev) => ({ ...prev, title: undefined }));
-            }}
-            placeholder="My end-to-end product design workflow"
-            aria-invalid={errors.title ? true : undefined}
-            aria-describedby={errors.title ? "stack-title-error" : undefined}
-          />
-          {errors.title && (
-            <p id="stack-title-error" className="text-sm text-destructive">
-              {errors.title}
-            </p>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-1.5">
-          <Label htmlFor="stack-description">
-            Description
-            <span className="font-normal text-muted-foreground">optional</span>
-          </Label>
-          <Textarea
-            id="stack-description"
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="What does this stack get done, and for whom?"
-            rows={3}
-          />
-        </div>
+      {/* Headline: the stack's own title is the page headline, styled like
+          the h1 it visually replaces — placeholder copy does the labeling. */}
+      <section className="flex flex-col gap-2">
+        <p className="text-sm font-medium text-muted-foreground">
+          Create your stack
+        </p>
+        <input
+          id="stack-title"
+          name="title"
+          type="text"
+          autoFocus
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            setErrors((prev) => ({ ...prev, title: undefined }));
+          }}
+          placeholder="Name your workflow…"
+          aria-label="Title"
+          aria-invalid={errors.title ? true : undefined}
+          aria-describedby={errors.title ? "stack-title-error" : undefined}
+          className="w-full bg-transparent text-3xl font-bold tracking-tight outline-none placeholder:text-muted-foreground/50"
+        />
+        {errors.title && (
+          <p id="stack-title-error" className="text-sm text-destructive">
+            {errors.title}
+          </p>
+        )}
+        <textarea
+          id="stack-description"
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="What does this stack get done, and for whom? (optional)"
+          rows={1}
+          aria-label="Description"
+          className="field-sizing-content w-full resize-none bg-transparent text-muted-foreground outline-none placeholder:text-muted-foreground/50"
+        />
       </section>
 
       <Separator />

@@ -24,14 +24,8 @@ export default function SubmitPage() {
           Back to all stacks
         </Link>
 
-        <header className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold tracking-tight">
-            Create Your Stack
-          </h1>
-          <p className="text-muted-foreground">
-            Share the tools you actually use — your workflow, step by step.
-          </p>
-        </header>
+        {/* The visible headline is the stack title input inside SubmitForm. */}
+        <h1 className="sr-only">Create Your Stack</h1>
 
         <SubmitForm />
       </main>
